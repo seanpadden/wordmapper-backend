@@ -9,9 +9,9 @@ class AuthController < ApplicationController
 
     # if all is well, send back the user
     if is_authenticated
-      render json: {token: create_token(user.id)} #i want a token insted
+      render json: {user: user, token: create_token(user.id)} #i want a token insted
     else
-      render json: {errors: ['Wrong username or password, youre not real... sorry']}, status: 422
+      render json: {errors: ["I don't believe you"]}, status: 422
     end
   end
 
