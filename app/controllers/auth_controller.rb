@@ -1,18 +1,21 @@
 class AuthController < ApplicationController
 
   def login
-    # find a user
     user = User.find_by(username: params[:username])
+      is_authenticated = user.authenticate(params[:password])
 
-    # if user exists, see if they are really the user via a password
-    is_authenticated = user.authenticate(params[:password])
 
-    # if all is well, send back the user
-    if is_authenticated
-      render json: {user: user, token: create_token(user.id)} #i want a token insted
+    if user && is_authenticated
+      render json: {user: user, token: create_token(user.id)} 
     else
       render json: {errors: ["I don't believe you"]}, status: 422
     end
+  end
+
+  private
+
+  def user_login_params
+    params.require(:user).permit(:username, :password)
   end
 
 end
