@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   get '/common', to: 'words#common'
   post '/savemap', to: 'maps#create'
+
 end  

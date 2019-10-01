@@ -5,6 +5,11 @@ class MapsController < ApplicationController
     render json: maps
   end 
 
+  def show 
+    maps = Map.where(user_id: params[:user_id])
+    render json: maps
+  end
+
   def create 
     map = Map.create(map_params)
     if map.valid?
