@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/profile', to: 'users#profile'
 
-  
+  get '/common', to: 'words#common'
 end  

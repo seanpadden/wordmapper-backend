@@ -8,8 +8,12 @@ class WordsController < ApplicationController
   def create 
     word = Word.create(word_params)
     render json: {word_name: word}, status: :created 
-
   end
+
+  def common
+    @word = Word.find(params[:id])
+    render json: @word.most_searched_word
+  end   
 
   private 
 
