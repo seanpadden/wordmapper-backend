@@ -2,7 +2,7 @@ class MapsController < ApplicationController
 
   def index
     maps = Map.all
-    render json: maps
+    render json: maps, include: [:coordinates, :users] 
   end 
 
   def show 
@@ -12,6 +12,11 @@ class MapsController < ApplicationController
 
   def create 
     map = Map.create(map_params)
+    if map
+      coordinates = params["coordinates"].each do |coord|
+        map.coordinates.create(coord.permit(:lat, :lng))
+      end 
+    end 
     if map.valid?
       render json: map
     else 
@@ -22,7 +27,11 @@ class MapsController < ApplicationController
   private 
 
   def map_params
-    params.permit(:word_name, :etymology, :lat, :lng, :user_id)
+    params.permit(:word_name, :etymology, :user_id)
   end
+
+  def coordinate_params
+    params.permit(:lat, :lng, :map_id)
+  end 
 
 end

@@ -1,4 +1,5 @@
 class Map < ApplicationRecord
   belongs_to :user
-  validates :word_name, :etymology, :lat, :lng, :user_id, presence: true
+  has_many :coordinates
+  validates :word_name, :etymology, :coordinates, :user_id, presence: true
 end
