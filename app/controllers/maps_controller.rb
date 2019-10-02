@@ -12,11 +12,9 @@ class MapsController < ApplicationController
 
   def create 
     map = Map.create(map_params)
-    if map
       coordinates = params["coordinates"].each do |coord|
         map.coordinates.create(coord.permit(:lat, :lng))
       end 
-    end 
     if map.valid?
       render json: map
     else 
