@@ -18,7 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'figaro'
 
-# gem 'active_model_serializers'
+gem 'active_model_serializers'
 
 
 # Use ActiveStorage variant
