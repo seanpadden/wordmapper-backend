@@ -10,4 +10,10 @@
 #   Word.create(word_name: "desert", definition: "affected with disease or ill health : ailing", etymology: "Middle English, from Anglo-French, from Late Latin {it}desertum{/it}, from Latin, neuter {it}desertus{/it}, past participle of {it}deserere{/it} to desert, from {it}de-{/it} {it}serere{/it} to join together {ma}{mat|series|}{/ma}")
 # end 
 
+Language.destroy_all 
+Location.destroy_all
+
+en = Language.create(name: "English", country: "England")
+Location.create(lat: 54.0000, lng: -2.0000, language: en)
+
 puts "get seeded"
