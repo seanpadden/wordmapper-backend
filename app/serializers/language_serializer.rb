@@ -1,3 +1,3 @@
-class LanguageSerializer < ActiveModel::Serializer
-  attributes :id, :name, :country, :locations
-end
+# class LanguageSerializer < ActiveModel::Serializer
+#   attributes :id, :name, :country, :locations
+# end

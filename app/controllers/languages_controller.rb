@@ -1,7 +1,9 @@
 class LanguagesController < ApplicationController
   def index 
     languages = Language.all 
-    render json: languages
+    # byebug
+    # render json: languages
+    render json: languages, except: [:created_at, :updated_at], include: {locations: {only: [:lat, :lng]}}
   end 
 
   def show 
